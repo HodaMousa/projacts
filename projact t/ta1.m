@@ -1,0 +1,9 @@
+function Xp=spen(t,x);
+m=0.1;
+l=0.5;
+g=9.8;
+b=0.001;
+u=0;
+Xp=zeros(2,1);
+Xp(1)=x(2);
+Xp(2)=(-g*sin(x(1))/l)-((b*x(2))/(m*l^2))+(u/(m*l^2));
