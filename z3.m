@@ -1,0 +1,19 @@
+[file path]=uigetfile('*.*');
+im=imread([path file]);
+% im_clip=clip(im);
+e=size(im_clip,2)/size(im_clip,1);
+im_clip=imresize(im_clip,[100 20]);
+x1=floor(size(im_clip,2)/2);
+x2=size(im_clip,2)-floor(size(im_clip,2)/2);
+y1=floor(size(im_clip,1)/2);
+y2=size(im_clip,1)-floor(size(im_clip,1)/2);
+im_crop1=imcrop(im_clip,[1 1 x1 y1-1]);
+im_crop2=imcrop(im_clip,[x1 1 x2-1 y1-2]);
+im_crop4=imcrop(im_clip,[x1 y1 x2-1 y2-1]);
+im_crop3=imcrop(im_clip,[1 y1 x1-1 y2-1]);
+a=sum(sum(im_crop1));
+b=sum(sum(im_crop2));
+c=sum(sum(im_crop3));
+d=sum(sum(im_crop4));
+p=[a b c d e]';
+disp(['the number is :' num2str(vec2ind(net(p)))])

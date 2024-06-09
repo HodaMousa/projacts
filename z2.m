@@ -1,0 +1,10 @@
+load('data')
+net=patternnet(3);
+net.divideParam.trainRatio=1;
+net.divideParam.tastRatio=1;
+net.divideParam.valRatio=1;
+net.trainParam.epochs=1000;
+net.trainParam.goal=0;
+net.trainParam.min_grad=1e-26;
+net=train(net,p,t);
+error=sum((vec2ind(net(p))-vec2ind(t)).^2)
